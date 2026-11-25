@@ -26,7 +26,7 @@ jobs:
 
       - name: 下载 istoreos v24.10.0-rc5 源码
         run: |
-          git clone --depth 1 -b istoreos-v24.10.0-rc5 https://github.com/istoreos/istoreos.git 
+          git clone --depth 1 -b 24.10.0-rc5 https://github.com/istoreos/istoreos.git 
           cd istoreos
           git fetch --tags
           git checkout v24.10.0-rc5
