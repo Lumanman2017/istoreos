@@ -26,7 +26,7 @@ jobs:
 
       - name: 下载 istoreos 25.12 源码
         run: |
-          git clone --depth 1 -b istoreos-25.12 https://github.com/lumanman2017/istoreos.git 
+          git clone --depth 1 -b istoreos-25.12 https://github.com/istoreos/istoreos.git 
           cd kwr
           git fetch --tags
           git checkout v25.12
