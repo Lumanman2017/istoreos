@@ -139,6 +139,11 @@ jobs:
           echo "CONFIG_PACKAGE_htop=y" >> .config
           echo "CONFIG_PACKAGE_nano=y" >> .config
           echo "CONFIG_PACKAGE_tcpdump=y" >> .config
+          
+          echo "CONFIG_PACKAGE_kmod-tun=y" >> .config
+          echo "CONFIG_PACKAGE_openvpn-openssl=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-openvpn=y" >> .config
+          
 
           # 运行 defconfig
           make defconfig
