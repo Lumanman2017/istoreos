@@ -47,7 +47,7 @@ jobs:
 
       - name: 🔧 修改 Makefile (IMAGE_SIZE 8MB -> 16MB)
         run: |
-          cd kwr
+          cd istoreos
           MK_FILE="target/linux/ramips/image/mt7620.mk"
           if [ -f "$MK_FILE" ]; then
             sed -i '/phicomm_k2-v22.4/,/endef/ s/IMAGE_SIZE := .*/IMAGE_SIZE := 16064k/' "$MK_FILE"
@@ -56,7 +56,7 @@ jobs:
       # ========== 关键修改：先更新 feeds，再写配置 ==========
       - name: 🔄 更新 feeds
         run: |
-          cd openwrt
+          cd istoreos
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
@@ -146,7 +146,7 @@ jobs:
       # ========== 验证关键包 ==========
       - name: ✅ 验证关键包
         run: |
-          cd openwrt
+          cd istoreos
           echo "===== 关键包状态 ====="
           packages=(
             "luci" "luci-base" "luci-mod-admin-full" "luci-app-firewall"
@@ -195,7 +195,7 @@ jobs:
       # ========== 整理固件 ==========
       - name: 📦 整理固件
         run: |
-          cd kwr
+          cd istoreos
           mkdir -p firmware
           find bin/targets/ -name "*.bin" -exec cp {} firmware/ \;
           cd firmware
