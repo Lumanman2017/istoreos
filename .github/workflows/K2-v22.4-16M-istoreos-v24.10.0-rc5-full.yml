@@ -1,4 +1,4 @@
-name: K2 v22.4 istoreos 25.12
+name: K2 v22.4 istoreos v24.10.0-rc5
 
 on:
   workflow_dispatch:
@@ -24,13 +24,13 @@ jobs:
       - name: 清理旧的 istoreos 目录
         run: rm -rf openwrt
 
-      - name: 下载 istoreos 25.12 源码
+      - name: 下载 istoreos v24.10.0-rc5 源码
         run: |
-          git clone --depth 1 -b istoreos-24.10 https://github.com/istoreos/istoreos.git 
+          git clone --depth 1 -b istoreos-v24.10.0-rc5 https://github.com/istoreos/istoreos.git 
           cd istoreos
           git fetch --tags
-          git checkout v25.12
-          echo "✅ istoreos 25.12 源码下载完成"
+          git checkout vv24.10.0-rc5
+          echo "✅ istoreos v24.10.0-rc5 源码下载完成"
 
       # ========== 16M闪存适配 ==========
       - name: 🔧 修改 DTS (8MB -> 16MB)
@@ -184,12 +184,12 @@ jobs:
       - name: 📤 保存配置文件到当前仓库
         run: |
           cd ${{ github.workspace }}
-          mkdir -p config-files-25.12
-          cp istoreos/.config config-files-25.12/
-          cp istoreos/target/linux/ramips/dts/mt7620a_phicomm_k2-v22.4.dts config-files-25.12/
-          cp istoreostarget/linux/ramips/image/mt7620.mk config-files-25.12/
-          git add config-files-25.12/
-          git commit -m "更新 istoreos 25.12 配置 $(date)" || echo "无变更，跳过提交"
+          mkdir -p config-files-v24.10.0-rc5
+          cp istoreos/.config config-files-v24.10.0-rc5/
+          cp istoreos/target/linux/ramips/dts/mt7620a_phicomm_k2-v22.4.dts config-files-v24.10.0-rc5/
+          cp istoreostarget/linux/ramips/image/mt7620.mk config-files-v24.10.0-rc5/
+          git add config-files-v24.10.0-rc5/
+          git commit -m "更新 istoreos v24.10.0-rc5 配置 $(date)" || echo "无变更，跳过提交"
           git push
 
       # ========== 整理固件 ==========
@@ -206,6 +206,6 @@ jobs:
       - name: ⬆️ 上传固件
         uses: actions/upload-artifact@v7
         with:
-          name: K2-v22.4-16M-istoreos-25.12-full-V1.0
+          name: K2-v22.4-16M-istoreos-v24.10.0-rc5-full-V1.0
           path: istoreos/firmware/
           retention-days: 30
