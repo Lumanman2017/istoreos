@@ -218,6 +218,6 @@ jobs:
       - name: ⬆️ 上传固件
         uses: actions/upload-artifact@v7
         with:
-          name: K2-v22.4-16M-istoreos-v24.10.0-rc5-full-V1.0
+          name: K2-v22.4-16M-istoreos-v24.10.0-rc5-full-V1.0.1
           path: istoreos/firmware/
           retention-days: 30
